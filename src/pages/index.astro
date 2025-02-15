@@ -1,147 +1,70 @@
 ---
-// Components
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import LinkTree from "../components/LinkTree.astro";
-import Spacer from "../components/Spacer.astro";
-import Iframe from "../components/Iframe.astro";
-import List from "../components/List.astro";
-import PersonalCard from "../components/PersonalCard.astro";
-
-// Images
-import kirby from "../assets/kirby-mushroom.gif";
-import pfp from "../assets/pfp.png";
-import miku from "../assets/gifs/miku-shimie-shimie.gif";
-
-const Title = "Home";
-const HeaderTitle = "Welcome to JellyCat Cafe";
-const Description = "PolyCat's virtual cat cafe";
-
-const Mastodon = "https://sunny.garden/@PolyCat";
-
-// Link Tree
-const SocialLinks = [
-    {
-        href: "https://sunny.garden/@PolyCat",
-        text: "Mastodon",
-        label: "Link to PolyCat's Mastodon",
-    },
-    {
-        href: "https://cara.app/polycat",
-        text: "Cara",
-        label: "Link to PolyCat's Cara",
-    },
-    {
-        href: "https://github.com/PolyCatDev",
-        text: "Github",
-        label: "Link to PolyCat's Github",
-    },
-];
-
-const ContactLinks = [
-    {
-        href: "mailto:contact.polycat@proton.me",
-        text: "contact.polycat\u200B@proton.me",
-        label: "Email link to contact PolyCat",
-    },
-];
-
-const ProjectLinks = [
-    {
-        href: "https://github.com/PolyCatDev/bluecat",
-        text: "BlueCat",
-        label: "Link to BlueCat project",
-    },
-    {
-        href: "https://flipper-cafe.duckdns.org/",
-        text: "Flipper Cafe",
-        label: "Link to Flipper Cafe database",
-    },
-    {
-        href: "https://github.com/PolyCatDev/bash-factory",
-        text: "Bash Factory",
-        label: "Link to Bash Factory database",
-    },
-    {
-        href: "https://github.com/PolyCatDev/obs-waykey",
-        text: "OBS WayKey",
-        label: "Link to OBS WayKey project",
-    },
-];
-
-// To Do
-const todoItems = [
-    { text: "Background Music" },
-    { text: "Art Gallery" },
-    { text: "Featured Music Banner" },
-    { text: "Bash Factory Page" },
-    { text: "Flipper Caffe Page" },
-];
+import PageBase from "../layouts/PageBase.astro";
+import Logo from "../components/elements/Logo.astro";
 ---
 
-<Layout title={Title} description={Description}>
-    <a rel="me" href={Mastodon} aria-label="Hidden Mastodon validation link"
-    ></a>
-    <section class="flex justify-center">
-        <section class="lg:flex">
-            <section class="md:flex">
-                <section>
-                    <Header motto={Description}>{HeaderTitle}</Header>
+<PageBase title="Index" description="Welcome to the JellyCat Cafe">
+    <div class="m-4">
+        <Logo />
+    </div>
+</PageBase>
 
-                    <PersonalCard
-                        image={pfp}
-                        alt="PolyCat's profile picture"
-                        title="Hi, I'm PolyCat and welcome to my virtual cat cafe"
-                    >
-                        An artist and programmer that likes penguins and hot
-                        chocolate.
-                    </PersonalCard>
+<style is:global>
+    #logo {
+        animation-duration: 1s;
+        animation-name: fadeIn;
+    }
 
-                    <LinkTree
-                        title="You can find me here"
-                        links={SocialLinks}
-                    />
-                    <LinkTree title="Contact me here" links={ContactLinks} />
-                </section>
-                <section>
-                    <PersonalCard
-                        image={kirby}
-                        alt="Kirby sitting on a mushroom"
-                        title="About this website"
-                        imageRight={true}
-                        imageCircle={false}
-                    >
-                        JellyCat Cafe is a combination between a personal
-                        website, portfolio and archive. It's mainly a place for
-                        me to post and archive my stuff. More things will be
-                        added with time (see to do list).</PersonalCard
-                    >
-                    <LinkTree
-                        title="Here are some of my cool projects"
-                        links={ProjectLinks}
-                    />
-                    <List title="To Do" items={todoItems} image={miku} />
-                </section>
-            </section>
-            <section class="md:flex lg:block">
-                <div class="grow">
-                    <Iframe
-                        src="https://www.youtube-nocookie.com/embed/LKcT-aQuIFs?si=50PvG_abTg8eu087"
-                        title='"Microsoft broke my voice" by a_lilian'
-                        text="Featured Video"
-                        height="315px"
-                    />
-                    <!--૮₍´˶• . • ⑅ ₎ა  ::  /ᐠ. ｡.ᐟ\ᵐᵉᵒʷˎˊ˗  ::  /ᐠ - ˕ -マ  ::  ≽^• ˕ • ^≼></!-->
-                    <Spacer> ૮₍´˶• . • ⑅ ₎ა </Spacer>
-                </div>
-                <Iframe
-                    src="https://www5.cbox.ws/box/?boxid=953460&boxtag=UrEazW"
-                    title="Chat Box"
-                    text="Chatbox"
-                    rounded={false}
-                    height="420px"
-                />
-            </section>
-        </section>
-    </section>
-</Layout>
+    #rings {
+        animation-duration: 1s;
+        animation-name: ringsFadeIn;
+        animation-delay: 0ms;
+    }
+
+    #floating-blobs {
+        visibility: hidden;
+        animation-delay: 300ms;
+        animation-duration: 1s;
+        animation-name: blobsFadeIn;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(80px);
+        }
+        to {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes ringsFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes blobsFadeIn {
+        from {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        90% {
+            opacity: 1;
+        }
+        to {
+            visibility: visible;
+            transform: translateY(0px);
+        }
+    }
+</style>
