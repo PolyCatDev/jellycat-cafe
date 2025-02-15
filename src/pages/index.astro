@@ -16,7 +16,8 @@ import Logo from "../components/elements/Logo.astro";
     }
 
     #rings {
-        animation-duration: 1s;
+        animation-duration: 800ms;
+        animation-delay: 100ms;
         animation-name: ringsFadeIn;
         animation-delay: 0ms;
     }
@@ -25,6 +26,14 @@ import Logo from "../components/elements/Logo.astro";
         visibility: hidden;
         animation-delay: 300ms;
         animation-duration: 1s;
+        animation-name: blobsFadeIn;
+        animation-fill-mode: forwards;
+    }
+
+    #face {
+        visibility: hidden;
+        animation-delay: 300ms;
+        animation-duration: 800ms;
         animation-name: blobsFadeIn;
         animation-fill-mode: forwards;
     }
