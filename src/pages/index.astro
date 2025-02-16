@@ -9,21 +9,31 @@ import Logo from "../components/elements/Logo.astro";
             <Logo />
         </div>
     </div>
+    <h1 class="text-center text-6xl font-bold font-[Twinkle_Star] text-fade-in">JellyCat Cafe</h1>
 </PageBase>
 
 <style is:global>
+
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+ES+Deco:wght@100..400&family=Playwrite+PT:wght@100..400&family=Twinkle+Star&display=swap');
+
     #logo {
         animation-duration: 1s;
         animation-name: fadeIn;
     }
 
-    #rings {
+    #rings, .text-fade-in {
         animation-duration: 800ms;
         animation-delay: 100ms;
         animation-name: ringsFadeIn;
-        animation-delay: 0ms;
     }
 
+    .text-fade-in {
+        animation-delay: 400ms;
+        animation-duration: 800ms;
+        visibility: hidden;
+        animation-fill-mode: forwards;
+
+    }
     #floating-blobs {
         visibility: hidden;
         animation-delay: 300ms;
@@ -39,6 +49,8 @@ import Logo from "../components/elements/Logo.astro";
         animation-name: blobsFadeIn;
         animation-fill-mode: forwards;
     }
+
+
 
     @keyframes fadeIn {
         from {
@@ -61,6 +73,7 @@ import Logo from "../components/elements/Logo.astro";
         to {
             opacity: 1;
             transform: translateY(0px);
+            visibility: visible;
         }
     }
 
